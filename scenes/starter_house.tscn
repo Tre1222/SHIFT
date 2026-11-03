@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c20lgpjxy2h7c"]
+
+[ext_resource type="Texture2D" uid="uid://c213nlwfisil" path="res://assets/icon.svg" id="1_caunk"]
+[ext_resource type="PackedScene" uid="uid://ku43kpxjl3ra" path="res://scenes/player.tscn" id="2_bbjjl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_caunk"]
+size = Vector2(128, 128)
+
+[node name="StarterHouse" type="Node2D" unique_id=1439251550]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1630520285]
+position = Vector2(348.00003, 280.99997)
+scale = Vector2(5.409675, 0.7065712)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=898233857]
+texture = ExtResource("1_caunk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1480992010]
+shape = SubResource("RectangleShape2D_caunk")
+
+[node name="Player" parent="." unique_id=1509252998 instance=ExtResource("2_bbjjl")]
+
+[node name="front" type="Node2D" parent="." unique_id=472014378]
+
+[node name="middle" type="Node2D" parent="." unique_id=1341965253]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="middle" unique_id=1432969555]
+z_index = -2
+position = Vector2(348.00003, 280.99997)
+rotation = 1.0605706
+scale = Vector2(5.4096746, 0.7065712)
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="middle/StaticBody2D2" unique_id=1677763269]
+texture = ExtResource("1_caunk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="middle/StaticBody2D2" unique_id=577843545]
+shape = SubResource("RectangleShape2D_caunk")
+
+[node name="back" type="Node2D" parent="." unique_id=254717737]
