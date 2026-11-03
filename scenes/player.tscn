@@ -67,3 +67,9 @@ shape = SubResource("RectangleShape2D_fjrip")
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=1146082782]
 zoom = Vector2(3.34, 3.34)
 script = ExtResource("3_qhqgy")
+
+[node name="Timer" type="Timer" parent="PlayerCamera" unique_id=1721377092]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="PlayerCamera/Timer" to="PlayerCamera" method="_on_timer_timeout"]

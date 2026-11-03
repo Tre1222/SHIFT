@@ -3,14 +3,18 @@ extends CharacterBody2D
 
 
 @onready var sprite : AnimatedSprite2D = get_node("AnimatedSprite2D")
+@onready var camera : Camera2D = get_node("PlayerCamera")
+
 
 @export var speed : int
 @export var jump_force : int
 
-
 @export var front_node : Node2D
 @export var middle_node : Node2D
 @export var back_node : Node2D
+
+
+
 
 var gravity = ProjectSettings.get("physics/2d/default_gravity")
 
@@ -28,8 +32,12 @@ enum state {
 
 var current_state : state = state.idle
 
-
-
+func _ready():
+	_swap_collision_state(true)
+	camera.front_node = front_node
+	camera.middle_node = middle_node
+	camera.back_node = back_node
+	
 
 func _swap_collision_state(forward : bool):
 	

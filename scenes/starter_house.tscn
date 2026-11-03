@@ -18,11 +18,28 @@ texture = ExtResource("1_caunk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1480992010]
 shape = SubResource("RectangleShape2D_caunk")
 
-[node name="Player" parent="." unique_id=1509252998 instance=ExtResource("2_bbjjl")]
+[node name="Player" parent="." unique_id=1509252998 node_paths=PackedStringArray("front_node", "middle_node", "back_node") instance=ExtResource("2_bbjjl")]
+front_node = NodePath("../front")
+middle_node = NodePath("../middle")
+back_node = NodePath("../back")
 
 [node name="front" type="Node2D" parent="." unique_id=472014378]
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="front" unique_id=730857546]
+z_index = -1
+position = Vector2(270.00003, 427.00003)
+rotation = 1.0605706
+scale = Vector2(5.4096746, 0.7065712)
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="front/StaticBody2D2" unique_id=431872916]
+texture = ExtResource("1_caunk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="front/StaticBody2D2" unique_id=329345355]
+shape = SubResource("RectangleShape2D_caunk")
+
 [node name="middle" type="Node2D" parent="." unique_id=1341965253]
+texture_filter = 2
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="middle" unique_id=1432969555]
 z_index = -2
@@ -38,3 +55,16 @@ texture = ExtResource("1_caunk")
 shape = SubResource("RectangleShape2D_caunk")
 
 [node name="back" type="Node2D" parent="." unique_id=254717737]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="back" unique_id=1882226553]
+z_index = -3
+position = Vector2(565, 285.00003)
+rotation = 1.0605706
+scale = Vector2(5.4096746, 0.7065712)
+collision_layer = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="back/StaticBody2D2" unique_id=2031719699]
+texture = ExtResource("1_caunk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="back/StaticBody2D2" unique_id=1669295101]
+shape = SubResource("RectangleShape2D_caunk")
