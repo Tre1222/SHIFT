@@ -22,7 +22,6 @@ PlayerData="*uid://bvwpa7r2s64op"
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [dotnet]
 

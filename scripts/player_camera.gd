@@ -35,7 +35,7 @@ func handle_layer_shift(new_layer : int) -> void:
 	
 	start_shake(8.0, 18.0)
 	
-	var tween : Tween = create_tween().set_parallel(true)
+	
 	
 	var active_color : Color = Color(1.0,1.0,1.0,1.0)
 	var faded_back : Color = Color(0.4, 0.4, 0.5, 0.5)
@@ -45,6 +45,7 @@ func handle_layer_shift(new_layer : int) -> void:
 		return
 	match new_layer:
 		1: #Forward
+			var tween : Tween = create_tween().set_parallel(true)
 			tween.tween_property(self, "zoom", Vector2(3.64,3.44),0.3).set_trans(Tween.TRANS_QUAD)
 			
 
@@ -54,6 +55,7 @@ func handle_layer_shift(new_layer : int) -> void:
 			tween.tween_property(middle_node, "modulate", faded_back, 0.3)
 			tween.tween_property(back_node, "modulate", faded_back * 0.5, 0.3)
 		2: #Middle
+			var tween : Tween = create_tween().set_parallel(true)
 			tween.tween_property(self, "zoom", Vector2(3.34,3.34),0.3).set_trans(Tween.TRANS_QUAD)
 
 			#Adjust layers
@@ -61,13 +63,14 @@ func handle_layer_shift(new_layer : int) -> void:
 			tween.tween_property(middle_node, "modulate", active_color, 0.3)
 			tween.tween_property(back_node, "modulate", faded_back, 0.3)
 		3: #back
+			var tween : Tween = create_tween().set_parallel(true)
 			tween.tween_property(self, "zoom", Vector2(3.04,3.24),0.3).set_trans(Tween.TRANS_QUAD)
 
 			#Adjust layers
 			tween.tween_property(front_node, "modulate", faded_front * 0.5, 0.3)
 			tween.tween_property(middle_node, "modulate", faded_front, 0.3)
 			tween.tween_property(back_node, "modulate", active_color, 0.3)
-	tween.play()
+	
 
 
 func _on_timer_timeout() -> void:
