@@ -25,7 +25,7 @@ enum facing {
 
 enum state {
 	idle,
-	walking,
+	running,
 	interacting,
 	jumping,
 }
@@ -74,12 +74,12 @@ func _swap_collision_state(forward : bool):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-
+	print(current_state)
 	match current_state:
 		state.idle:
 			sprite.play("Idle")
-		state.walking:
-			pass
+		state.running:
+			sprite.play("Running")
 		state.interacting:
 			pass
 		state.jumping:
@@ -90,36 +90,59 @@ func _input(event: InputEvent) -> void:
 		_swap_collision_state(true)
 	elif event.is_action_pressed("back"):
 		_swap_collision_state(false)
-	
-	
-	
-func _physics_process(delta: float) -> void:
-	
-	
-	
-	
-	if !is_on_floor():
-		velocity.y += gravity
-		
-		
-	var direction : float = Input.get_axis("left", "right")
-	
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		print("jumped")
-		velocity.y = -jump_force
-	
-	
-	
-	if direction > 0:
-		sprite.flip_h = false
-	elif direction < 0:
-		sprite.flip_h = true
 
-	print(direction)
-	velocity.x = direction * speed
-	
-	
-	
-	
-	
+	match current_state:
+
+		state.idle:
+			if event.is_action_pressed("left") or event.is_action_pressed("right"):
+				current_state = state.running
+		state.running:
+			pass
+		state.jumping:
+			pass
+		state.interacting:
+			pass
+func _physics_process(delta: float) -> void:
+	match current_state:
+		state.running:
+			if ! is_on_floor():
+				velocity.y += gravity
+
+			var direction: float = Input.get_axis("left", "right")
+
+			if direction == 0:
+				current_state = state.idle
+
+			if is_on_floor() and Input.is_action_just_pressed("jump"):
+				print("jumped")
+				velocity.y = -jump_force
+
+			if direction > 0:
+				sprite.flip_h = false
+			elif direction < 0:
+				sprite.flip_h = true
+
+			print(direction)
+			velocity.x = direction * speed
+		state.idle:
+			if ! is_on_floor():
+				velocity.y += gravity
+
+			var direction: float = Input.get_axis("left", "right")
+
+			if is_on_floor() and Input.is_action_just_pressed("jump"):
+				print("jumped")
+				velocity.y = -jump_force
+
+			if direction > 0:
+				sprite.flip_h = false
+			elif direction < 0:
+				sprite.flip_h = true
+				
+			print(direction)
+			velocity.x = direction * speed
+		state.interacting:
+			pass
+		state.jumping:
+			pass
 	move_and_slide()

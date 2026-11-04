@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b3wo476x6sclv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nt7q6"]
+corner_radius_top_left = 360
+corner_radius_top_right = 360
+corner_radius_bottom_right = 360
+corner_radius_bottom_left = 360
+
+[sub_resource type="LabelSettings" id="LabelSettings_n6g7h"]
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 12
+
+[node name="UI" type="CanvasLayer" unique_id=1991335309]
+
+[node name="Control" type="Control" parent="." unique_id=754329725]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=1920844311]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nt7q6")
+
+[node name="Label" type="Label" parent="Control/PanelContainer" unique_id=1753680505]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "TIME LEFT : "
+label_settings = SubResource("LabelSettings_n6g7h")
+horizontal_alignment = 1
+vertical_alignment = 1
