@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://djo8ichnbq28w" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cbisuevsbateh" path="res://assets/player/PlayerWalking-sheet.png" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://dnl7ctvuwpcp7" path="res://scripts/player_camera.gd" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://b3wo476x6sclv" path="res://scenes/ui.tscn" id="5_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -93,4 +94,11 @@ script = ExtResource("3_qhqgy")
 one_shot = true
 autostart = true
 
+[node name="UI" parent="." unique_id=1991335309 instance=ExtResource("5_qlg0r")]
+
+[node name="RemainingTime" type="Timer" parent="." unique_id=1158579994]
+unique_name_in_owner = true
+autostart = true
+
 [connection signal="timeout" from="PlayerCamera/Timer" to="PlayerCamera" method="_on_timer_timeout"]
+[connection signal="timeout" from="RemainingTime" to="UI" method="_on_remaining_time_timeout"]

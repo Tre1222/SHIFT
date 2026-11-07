@@ -145,4 +145,5 @@ func _physics_process(delta: float) -> void:
 			pass
 		state.jumping:
 			pass
-	move_and_slide()
+	if !PlayerData.time_out:
+		move_and_slide()
