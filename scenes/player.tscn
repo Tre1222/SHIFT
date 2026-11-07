@@ -71,7 +71,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrip"]
 size = Vector2(14, 47)
 
-[node name="Player" type="CharacterBody2D" unique_id=1509252998]
+[node name="Player" type="CharacterBody2D" unique_id=1509252998 groups=["player"]]
 z_index = -3
 script = ExtResource("1_g2els")
 speed = 400

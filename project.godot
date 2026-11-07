@@ -27,6 +27,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="SHIFT"
 
+[global_group]
+
+player=""
+
 [input]
 
 left={

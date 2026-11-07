@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ba0k8hvliw6ua"]
+
+[ext_resource type="Script" uid="uid://blawcopm4uomp" path="res://scripts/stairs.gd" id="1_qpode"]
+[ext_resource type="Texture2D" uid="uid://c213nlwfisil" path="res://assets/icon.svg" id="1_tpqne"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6g7h"]
+size = Vector2(91, 128)
+
+[node name="stairs" type="Area2D" unique_id=1710332129]
+z_index = -4
+script = ExtResource("1_qpode")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=412357056]
+scale = Vector2(0.70373553, 0.99100524)
+texture = ExtResource("1_tpqne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1322052327]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_n6g7h")
+
+[node name="Cooldown" type="Timer" parent="." unique_id=65883885]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
