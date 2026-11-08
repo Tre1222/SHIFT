@@ -152,6 +152,7 @@ shape = SubResource("RectangleShape2D_caunk")
 
 [node name="EndArea" type="Area2D" parent="All" unique_id=988968675]
 position = Vector2(650, 183)
+collision_layer = 4
 collision_mask = 1048575
 script = ExtResource("5_amsp6")
 
@@ -159,3 +160,4 @@ script = ExtResource("5_amsp6")
 shape = SubResource("RectangleShape2D_n6g7h")
 
 [connection signal="body_entered" from="All/EndArea" to="All/EndArea" method="_on_body_entered"]
+[connection signal="body_exited" from="All/EndArea" to="All/EndArea" method="_on_body_exited"]
